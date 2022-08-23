@@ -9,3 +9,20 @@ img {
   /* height: 150px; */
   object-fit: cover;
 }
+.counter-container {
+  /* background-color: gray; */
+  width: min-content;
+  margin: 0 auto;
+  margin-bottom: 36px;
+}
+.counter-botton-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.counter-progress {
+  width: 300px;
+}
+.counter-botton-container button {
+  font-size: 18px;
+}
