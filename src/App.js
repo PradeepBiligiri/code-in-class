@@ -194,15 +194,15 @@ function MovieList() {
 
   return (
     <div className="movie-list">
-      {moviList.map((mv) => (
-        <Movies movie={mv} />
+      {moviList.map((mv, id ) => (
+        <Movies key={id} movie={mv} />
       ))}
     </div>
   );
 }
 
 function Movies({ movie }) {
-  const [show, steShow] = useState(true);
+  const [show, setShow] = useState(true);
   const styles = {
     color: movie.rating >= 8 ? "green" : "red",
   };
@@ -215,7 +215,8 @@ function Movies({ movie }) {
           ⭐ {movie.rating}
         </p>
       </div>
-      <p className="movie-summary">{movie.summary}</p>
+      <button onClick={() => setShow(!show)}>Toogle Summery</button>
+      {show ? <p className="movie-summary">{movie.summary}</p> : null}
       <Counter />
     </div>
   );
@@ -235,7 +236,7 @@ function Counter() {
       <progress
         className="counter-progress"
         max="100"
-        value={(like / (like + dislike)) * 100}
+        value={(like / (like + dislike)) * 100 || 0}
       ></progress>
       <div className="counter-botton-container">
         <button
