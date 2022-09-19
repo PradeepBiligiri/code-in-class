@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Counter } from "./Counter";
-import { AddMovie } from "./AddMovie";
+import Button from "@mui/material/Button";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 export function MovieList({ moviList }) {
   return (
     <div>
-      <AddMovie moviList={moviList} />
       <div className="movie-list">
         {moviList.map((mv, index) => (
           <Movies key={index} movie={mv} />
@@ -28,9 +28,14 @@ function Movies({ movie }) {
           ⭐ {movie.rating}
         </p>
       </div>
-      <button onClick={() => setShow(!show)} className="toggle-button">
-        Toogle Summery
-      </button>
+      <Button
+        variant="text"
+        onClick={() => setShow(!show)}
+        className="toggle-button"
+      >
+        <KeyboardArrowDownIcon />
+      </Button>
+
       {show ? <p className="movie-summary">{movie.summary}</p> : null}
       <Counter />
       <div></div>

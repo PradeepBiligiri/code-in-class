@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
-import { ColorGame } from "./ColorGame";
-import { Welcome } from "./Welcome";
+// import { ColorGame } from "./ColorGame";
+// import { Welcome } from "./Welcome";
 import { MovieList } from "./MovieList";
 import { AddMovie } from "./AddMovie";
 
@@ -187,9 +187,9 @@ function App() {
       {/* {names.map((nm) => (
         <Welcome name={nm.name} profilePic={nm.profilePic} />
       ))} */}
+      <AddMovie moviList={moviList} setMoviList={setMoviList} />
 
       <MovieList moviList={moviList} />
-      <AddMovie moviList={moviList} setMoviList={setMoviList} />
       {/* <ColorGame /> */}
     </div>
   );

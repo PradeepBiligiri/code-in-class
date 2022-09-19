@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "@mui/material/Button";
 
 export function AddMovie({ moviList, setMoviList }) {
   const [name, setName] = useState("");
@@ -6,6 +7,12 @@ export function AddMovie({ moviList, setMoviList }) {
   const [rating, setRating] = useState("");
   const [summary, setSummary] = useState("");
   const [trailer, setTrailer] = useState("");
+
+  const AddMovie = () => {
+    const newMovie = { name, poster, rating, summary, trailer };
+    console.log(newMovie);
+    setMoviList([...moviList, newMovie]);
+  };
 
   // const [addMovie, setAddmovie] = useState("");
   // const [addMovieList, setAddMovieList] = useState({ moviList });
@@ -51,14 +58,9 @@ export function AddMovie({ moviList, setMoviList }) {
         value={trailer}
         onChange={(e) => setTrailer(e.target.value)}
       />
-      <button
-        onClick={() => {
-          const newMovie = { name, poster, rating, summary, trailer };
-          setMoviList([...moviList, newMovie]);
-        }}
-      >
+      <Button variant="contained" onClick={AddMovie}>
         Add Movie
-      </button>
+      </Button>
     </div>
   );
 }
