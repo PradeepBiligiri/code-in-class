@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Counter } from "./Counter";
-import Button from "@mui/material/Button";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardControlKeyIcon from "@mui/icons-material/KeyboardControlKey";
+import { Card, CardActions, CardContent, IconButton } from "@mui/material";
 
 export function MovieList({ moviList }) {
   return (
@@ -15,30 +16,38 @@ export function MovieList({ moviList }) {
   );
 }
 function Movies({ movie }) {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const styles = {
     color: movie.rating >= 8 ? "green" : "red",
   };
   return (
-    <div className="movie-container">
+    <Card sx={{ height: "min-content" }} className="movie-container">
       <img src={movie.poster} alt={movie.name} className="movie-poster" />
-      <div className="movie-spec">
-        <h2 className="movie-name">{movie.name}</h2>
-        <p className="movie-rating" style={styles}>
-          ⭐ {movie.rating}
-        </p>
-      </div>
-      <Button
-        variant="text"
-        onClick={() => setShow(!show)}
-        className="toggle-button"
-      >
-        <KeyboardArrowDownIcon />
-      </Button>
+      <CardContent>
+        <div className="movie-spec">
+          <div className="name-toggle-container">
+            <h2 className="movie-name">{movie.name}</h2>
+            <IconButton
+              color="primary"
+              aria-label="Summary toggle button"
+              onClick={() => setShow(!show)}
+              className="toggle-button"
+            >
+              {show ? <KeyboardControlKeyIcon /> : <KeyboardArrowDownIcon />}
+            </IconButton>
+          </div>
+          <p className="movie-rating" style={styles}>
+            ⭐ {movie.rating}
+          </p>
+        </div>
 
-      {show ? <p className="movie-summary">{movie.summary}</p> : null}
-      <Counter />
+        {show ? <p className="movie-summary">{movie.summary}</p> : null}
+      </CardContent>
+      <CardActions>
+        <Counter />
+      </CardActions>
+
       <div></div>
-    </div>
+    </Card>
   );
 }
