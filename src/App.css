@@ -12,10 +12,11 @@ body {
   /* height: 150px; */
   object-fit: cover;
 }
-/* .counter-container {
-  margin-bottom: 36px;
-} */
+.color-box {
+  margin: 0, auto;
+}
 .counter-botton-container {
+  margin-top: 10px;
   display: flex;
   justify-content: flex-end;
   gap: 10px;

@@ -1,9 +1,10 @@
 import "./App.css";
 import { useState } from "react";
-// import { ColorGame } from "./ColorGame";
-// import { Welcome } from "./Welcome";
+import { ColorGame } from "./ColorGame";
 import { MovieList } from "./MovieList";
 import { AddMovie } from "./AddMovie";
+import { Routes, Route, Link } from "react-router-dom";
+import { Home } from "./Home";
 
 function App() {
   const names = [
@@ -184,13 +185,31 @@ function App() {
 
   return (
     <div className="App">
-      {/* {names.map((nm) => (
-        <Welcome name={nm.name} profilePic={nm.profilePic} />
-      ))} */}
-      <AddMovie moviList={moviList} setMoviList={setMoviList} />
-
-      <MovieList moviList={moviList} />
-      {/* <ColorGame /> */}
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/movies">Movies</Link>
+          </li>
+          <li>
+            <Link to="/color-game">Color Game</Link>
+          </li>
+          <li>
+            <Link to="/movies/add">Add Movie</Link>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies" element={<MovieList moviList={moviList} />} />
+        <Route path="/color-game" element={<ColorGame />} />
+        <Route
+          path="/movies/add"
+          element={<AddMovie moviList={moviList} setMoviList={setMoviList} />}
+        />
+      </Routes>
     </div>
   );
 }

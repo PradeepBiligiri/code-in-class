@@ -5,5 +5,5 @@ export function ColorBox({ color }) {
     marginTop: "10px",
     background: color,
   };
-  return <div style={styles}></div>;
+  return <div style={styles} className="color-box"></div>;
 }
