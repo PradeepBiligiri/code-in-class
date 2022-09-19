@@ -3,10 +3,13 @@ import { useState } from "react";
 import { ColorGame } from "./ColorGame";
 import { MovieList } from "./MovieList";
 import { AddMovie } from "./AddMovie";
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { Routes, Route, Link, Navigate, useNavigate } from "react-router-dom";
 import { Home } from "./Home";
 import { MovieDeatails } from "./MovieDeatails";
 import { NotFound } from "./NotFound";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Button from "@mui/material/Button";
 
 function App() {
   const names = [
@@ -195,24 +198,26 @@ function App() {
       trailer: "https://www.youtube.com/embed/OKBMCL-frPU",
     },
   ]);
+  const Navigate = useNavigate();
   return (
     <div className="App">
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/movies">Movies</Link>
-          </li>
-          <li>
-            <Link to="/color-game">Color Game</Link>
-          </li>
-          <li>
-            <Link to="/movies/add">Add Movie</Link>
-          </li>
-        </ul>
-      </nav>
+      <AppBar position="static">
+        <Toolbar>
+          <Button color="inherit" onClick={() => Navigate("/")}>
+            HOME
+          </Button>
+          <Button color="inherit" onClick={() => Navigate("/movies")}>
+            MOVIES
+          </Button>
+          <Button color="inherit" onClick={() => Navigate("/color-game")}>
+            COLOR GAME
+          </Button>
+          <Button color="inherit" onClick={() => Navigate("/movies/add")}>
+            ADD MOVIES
+          </Button>
+        </Toolbar>
+      </AppBar>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/films" element={<Navigate replace to="/movies" />} />
