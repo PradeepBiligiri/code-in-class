@@ -38,6 +38,16 @@ body {
 .movie-container {
   width: 350px;
 }
+.movie-detail-container {
+  margin: 10px;
+  max-width: 850px;
+  text-align: justify;
+  padding: 16px, 32px;
+}
+.movie-details-back-button {
+  text-align: start;
+  margin: 10px;
+}
 .movie-spec {
   display: flex;
   align-items: center;
@@ -66,8 +76,8 @@ body {
   flex-wrap: wrap;
   gap: 10px;
 }
-.toggle-button {
-}
+/* .toggle-button {
+} */
 .add-movies-form {
   display: flex;
   padding: 16px;

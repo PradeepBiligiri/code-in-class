@@ -3,8 +3,10 @@ import { useState } from "react";
 import { ColorGame } from "./ColorGame";
 import { MovieList } from "./MovieList";
 import { AddMovie } from "./AddMovie";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import { Home } from "./Home";
+import { MovieDeatails } from "./MovieDeatails";
+import { NotFound } from "./NotFound";
 
 function App() {
   const names = [
@@ -182,7 +184,6 @@ function App() {
         "Members of a black ops team must track and eliminate a gang of masked murderers.",
     },
   ]);
-
   return (
     <div className="App">
       <nav>
@@ -203,12 +204,18 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/films" element={<Navigate replace to="/movies" />} />
         <Route path="/movies" element={<MovieList moviList={moviList} />} />
         <Route path="/color-game" element={<ColorGame />} />
+        <Route
+          path="/movies/:id"
+          element={<MovieDeatails moviList={moviList} />}
+        />
         <Route
           path="/movies/add"
           element={<AddMovie moviList={moviList} setMoviList={setMoviList} />}
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

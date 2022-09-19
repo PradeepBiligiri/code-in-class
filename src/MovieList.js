@@ -3,20 +3,23 @@ import { Counter } from "./Counter";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardControlKeyIcon from "@mui/icons-material/KeyboardControlKey";
 import { Card, CardActions, CardContent, IconButton } from "@mui/material";
+import InfoIcon from "@mui/icons-material/Info";
+import { useNavigate } from "react-router-dom";
 
 export function MovieList({ moviList }) {
   return (
     <div>
       <div className="movie-list">
         {moviList.map((mv, index) => (
-          <Movies key={index} movie={mv} />
+          <Movies key={index} movie={mv} id={index} />
         ))}
       </div>
     </div>
   );
 }
-function Movies({ movie }) {
+function Movies({ movie, id }) {
   const [show, setShow] = useState(false);
+  const Navigate = useNavigate();
   const styles = {
     color: movie.rating >= 8 ? "green" : "red",
   };
@@ -34,6 +37,14 @@ function Movies({ movie }) {
               className="toggle-button"
             >
               {show ? <KeyboardControlKeyIcon /> : <KeyboardArrowDownIcon />}
+            </IconButton>
+            <IconButton
+              color="primary"
+              aria-label="Summary toggle button"
+              onClick={() => Navigate(`/movies/${id}`)}
+              className="toggle-button"
+            >
+              <InfoIcon />
             </IconButton>
           </div>
           <p className="movie-rating" style={styles}>
