@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Button from "@mui/material/Button";
+import Badge from "@mui/material/Badge";
 
 export function Counter() {
   const [like, setLike] = useState(0);
@@ -17,23 +19,28 @@ export function Counter() {
         value={(like / (like + dislike)) * 100 || 0}
       ></progress>
       <div className="counter-botton-container">
-        <button
+        <Button
+          variant="text"
           onClick={() => {
             setLike(like + 1);
             console.log(like);
           }}
         >
-          👍{like}
-        </button>
+          👍
+          <Badge badgeContent={like} color="primary"></Badge>
+        </Button>
 
-        <button
+        <Button
+          variant="text"
           onClick={() => {
             setDislike(dislike + 1);
             console.log(dislike);
           }}
         >
-          👎{dislike}
-        </button>
+          👎
+          <Badge badgeContent={dislike} color="secondary"></Badge>
+        </Button>
+
         {/* <p>{count}</p> */}
       </div>
     </div>
