@@ -28,6 +28,16 @@ function App() {
   ];
   const [moviList, setMoviList] = useState([
     {
+      // id: "114",
+      name: "K.G.F Chapter 2",
+      poster:
+        "https://pbs.twimg.com/media/FIjGGeaVkAAj989?format=jpg&name=900x900",
+      rating: 8.4,
+      summary:
+        "In the blood-soaked Kolar Gold Fields, Rocky's name strikes fear into his foes. While his allies look up to him, the government sees him as a threat to law and order.Rocky must battle threats from all sides for unchallenged supremacy.",
+      trailer: "https://www.youtube.com/embed/jQsE85cI384",
+    },
+    {
       // id: "101",
       name: "Garuda Gamana Vrushabha Vahana",
       poster:
@@ -182,6 +192,7 @@ function App() {
       rating: 8.4,
       summary:
         "Members of a black ops team must track and eliminate a gang of masked murderers.",
+      trailer: "https://www.youtube.com/embed/OKBMCL-frPU",
     },
   ]);
   return (

@@ -14,7 +14,7 @@ export function MovieDeatails({ moviList }) {
     <div>
       <iframe
         width="100%"
-        height="850"
+        height="650"
         src={movie.trailer}
         title={movie.name}
         frameborder="0"
