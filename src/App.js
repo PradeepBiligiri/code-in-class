@@ -10,6 +10,10 @@ import { NotFound } from "./NotFound";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 
 function App() {
   const names = [
@@ -29,6 +33,9 @@ function App() {
         "https://1.bp.blogspot.com/-0ZUMPsBahSo/X0vuBttwtWI/AAAAAAAAdwM/_0Nuxi-PWUsgTsLdAmGZqILPiJf7N2bdACLcBGAsYHQ/w320-h640/best%2Bdp%2Bfor%2Bwhatsapp%2B%25281%2529.jpg",
     },
   ];
+
+  const Navigate = useNavigate();
+
   const [moviList, setMoviList] = useState([
     {
       // id: "114",
@@ -198,42 +205,63 @@ function App() {
       trailer: "https://www.youtube.com/embed/OKBMCL-frPU",
     },
   ]);
-  const Navigate = useNavigate();
-  return (
-    <div className="App">
-      <AppBar position="static">
-        <Toolbar>
-          <Button color="inherit" onClick={() => Navigate("/")}>
-            HOME
-          </Button>
-          <Button color="inherit" onClick={() => Navigate("/movies")}>
-            MOVIES
-          </Button>
-          <Button color="inherit" onClick={() => Navigate("/color-game")}>
-            COLOR GAME
-          </Button>
-          <Button color="inherit" onClick={() => Navigate("/movies/add")}>
-            ADD MOVIES
-          </Button>
-        </Toolbar>
-      </AppBar>
+  const [mode, setMode] = useState("dark");
+  const theme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  });
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/films" element={<Navigate replace to="/movies" />} />
-        <Route path="/movies" element={<MovieList moviList={moviList} />} />
-        <Route path="/color-game" element={<ColorGame />} />
-        <Route
-          path="/movies/:id"
-          element={<MovieDeatails moviList={moviList} />}
-        />
-        <Route
-          path="/movies/add"
-          element={<AddMovie moviList={moviList} setMoviList={setMoviList} />}
-        />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </div>
+  return (
+    <ThemeProvider theme={theme}>
+      <Paper elevation={3} sx={{ minHeight: "100vh", borderRadius: "0px" }}>
+        <div className="App">
+          <AppBar position="static">
+            <Toolbar>
+              <Button color="inherit" onClick={() => Navigate("/")}>
+                HOME
+              </Button>
+              <Button color="inherit" onClick={() => Navigate("/movies")}>
+                MOVIES
+              </Button>
+              <Button color="inherit" onClick={() => Navigate("/color-game")}>
+                COLOR GAME
+              </Button>
+              <Button color="inherit" onClick={() => Navigate("/movies/add")}>
+                ADD MOVIES
+              </Button>
+              <Button
+                startIcon={
+                  mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />
+                }
+                color="inherit"
+                onClick={() => setMode(mode === "light" ? "dark" : "light")}
+              >
+                {mode === "light" ? "dark" : "light"} Mode
+              </Button>
+            </Toolbar>
+          </AppBar>
+
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/films" element={<Navigate replace to="/movies" />} />
+            <Route path="/movies" element={<MovieList moviList={moviList} />} />
+            <Route path="/color-game" element={<ColorGame />} />
+            <Route
+              path="/movies/:id"
+              element={<MovieDeatails moviList={moviList} />}
+            />
+            <Route
+              path="/movies/add"
+              element={
+                <AddMovie moviList={moviList} setMoviList={setMoviList} />
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      </Paper>
+    </ThemeProvider>
   );
 }
 
