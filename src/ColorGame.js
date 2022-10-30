@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ColorBox } from "./ColorBox";
 import Button from "@mui/material/Button";
+import { TextField } from "@mui/material";
 
 export function ColorGame() {
   const [color, setColor] = useState("orange");
@@ -15,13 +16,20 @@ export function ColorGame() {
   ]);
   return (
     <div>
+      <TextField
+        style={style}
+        label="enter color name"
+        variant="filled"
+        onChange={(e) => setColor(e.target.value)}
+      />
+      {/* 
       <input
         style={style}
         type="text"
         value={color}
         placeholder="enter color name"
         onChange={(e) => setColor(e.target.value)}
-      />
+      /> */}
       <Button
         variant="outlined"
         onClick={() => {

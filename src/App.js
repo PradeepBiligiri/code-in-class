@@ -212,6 +212,10 @@ function App() {
     },
   });
 
+  fetch("https://6230246ef113bfceed49304c.mockapi.io/movies")
+    .then((data) => data.json())
+    .then((movies) => console.log(movies));
+
   return (
     <ThemeProvider theme={theme}>
       <Paper elevation={3} sx={{ minHeight: "100vh", borderRadius: "0px" }}>

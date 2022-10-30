@@ -27,11 +27,6 @@ export function Counter() {
       {like >= 10 ? (
         <h1 style={styles}>You have won the people's 💖😍🥰</h1>
       ) : null}
-      <progress
-        className="counter-progress"
-        max="100"
-        value={(like / (like + dislike)) * 100 || 0}
-      ></progress>
       <div className="counter-botton-container">
         <Button variant="text" aria-label="Like button" onClick={IncrementLike}>
           👍
