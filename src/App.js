@@ -14,6 +14,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { useEffect } from "react";
 
 function App() {
   const names = [
@@ -212,9 +213,11 @@ function App() {
     },
   });
 
-  fetch("https://6230246ef113bfceed49304c.mockapi.io/movies")
-    .then((data) => data.json())
-    .then((movies) => console.log(movies));
+  useEffect(() => {
+    fetch("https://6230246ef113bfceed49304c.mockapi.io/movies")
+      .then((data) => data.json())
+      .then((movies) => console.log(movies));
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>

@@ -4,6 +4,7 @@ import Badge from "@mui/material/Badge";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import { IconButton } from "@mui/material";
+import { useEffect } from "react";
 
 export function Counter() {
   const [like, setLike] = useState(0);
@@ -14,13 +15,17 @@ export function Counter() {
 
   const IncrementLike = () => {
     setLike(like + 1);
-    console.log(like);
+    // console.log(like);
   };
 
   const DecrementLike = () => {
     setDislike(dislike + 1);
-    console.log(dislike);
+    // console.log(dislike);
   };
+
+  // useEffect(() => {
+  //   console.log("Like Update👍", like);
+  // }, [like, dislike]);
 
   return (
     <div className="counter-container">
